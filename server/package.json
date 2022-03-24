@@ -16,7 +16,10 @@
     "remove-admin": "ts-node scripts/sl-admin-manager.ts admin remove",
     "list-admins": "ts-node scripts/sl-admin-manager.ts admins",
     "export-stats": "ts-node scripts/stats-exporter.ts",
-    "user-gdpr-package": "ts-node scripts/sl-admin-manager.ts admin gdpr-package"
+    "user-gdpr-package": "ts-node scripts/sl-admin-manager.ts admin gdpr-package",
+    "db:migrate": "npx dotenv-run-script no_dotenv_db:migrate",
+    "no_dotenv_db:migrate": "npx ts-node lib/migrate-db.mjs",
+    "postinstall": "npx ts-node lib/migrate-db.mjs"
   },
   "auto-changelog": {
     "output": "CHANGELOG.md",
@@ -48,6 +51,7 @@
     "bcrypt": "^5.0.0",
     "casbin": "^5.4.0",
     "casbin-basic-adapter": "^0.1.0",
+    "dotenv": "^16.0.0",
     "fastify": "^3.8.0",
     "fastify-cors": "^4.1.0",
     "fastify-favicon": "^3.0.0",
@@ -57,7 +61,8 @@
     "jsonwebtoken": "^8.5.1",
     "mixpanel": "^0.13.0",
     "nc-deeplink": "^1.0.6",
-    "pg": "^8.5.1"
+    "pg": "^8.5.1",
+    "postgres-migrations": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

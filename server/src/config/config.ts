@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import * as dotenv from 'dotenv';
 
 if (!fs.existsSync(__dirname + "/../config.json")) {
   fs.copyFileSync(__dirname + "/../config.template.json", __dirname + "/../config.json");
@@ -7,7 +8,7 @@ if (!fs.existsSync(__dirname + "/../config.json")) {
 } else {
   console.log("Using existing configuration: " + __dirname + ".json");
 }
-
+dotenv.config()
 export let config = require("../config.json");
 
 /**
